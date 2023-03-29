@@ -59,4 +59,3 @@ public class RecipeBackendController {
         this.maxTime = maxTime;
     }
 }
-}
