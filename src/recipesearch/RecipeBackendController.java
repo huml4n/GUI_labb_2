@@ -12,11 +12,11 @@ import java.util.List;
 public class RecipeBackendController {
 
 
-    private String difficulty;
-    private String cuisine;
-    private String mainIngredient;
-    private Integer maxPrice; //maxPrice - heltal över noll
-    private Integer maxTime; //10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150
+    private String difficulty = null;
+    private String cuisine = null;
+    private String mainIngredient = null;
+    private Integer maxPrice = null; //maxPrice - heltal över noll
+    private Integer maxTime = null; //10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150
 
     //Skriv funktion som kollar om det är över noll.
 
