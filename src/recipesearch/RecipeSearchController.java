@@ -8,6 +8,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
+import javafx.scene.layout.FlowPane;
+import se.chalmers.ait.dat215.lab2.Recipe;
 
 import java.net.URL;
 import java.util.ArrayList;
