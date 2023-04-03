@@ -74,7 +74,7 @@
                      <children>
                         <ScrollPane prefHeight="497.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <FlowPane prefHeight="503.0" prefWidth="531.0" />
+                              <FlowPane fx:id="recipeListFlowPane" prefHeight="503.0" prefWidth="531.0" />
                            </content></ScrollPane>
                      </children>
                   </AnchorPane>
