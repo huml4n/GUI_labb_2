@@ -1,89 +1,140 @@
 
 package recipesearch;
 
+import java.net.URL;
+import java.util.*;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.lab2.Recipe;
-
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import se.chalmers.ait.dat215.lab2.RecipeDatabase;
 
 
 public class RecipeSearchController implements Initializable {
-    RecipeBackendController backend;
 
-    public RecipeSearchController(RecipeBackendController backend) {
-        this.backend = backend;
+    @FXML public FlowPane flowResults;
+    @FXML public ComboBox<String> comboIngredient;
+    @FXML public ComboBox<String> comboCuisine;
+    @FXML public RadioButton radioAll;
+    @FXML public RadioButton radioEasy;
+    @FXML public RadioButton radioMedium;
+    @FXML public RadioButton radioHard;
+    @FXML public Spinner<Integer> spinPrice;
+    @FXML public Slider slideTime;
+    @FXML public Label labelTime;
+    @FXML public ImageView imgDetailedRecipe;
+    @FXML public Button btnCloseDetailedRecipe;
+    @FXML public Label labelDetailedRecipeName;
+    @FXML public Pane paneDetailed;
+    @FXML public SplitPane paneSearch;
+
+    private Map<String, RecipeListItem> recipeListItemMap = new HashMap<>();
+    private Map<RadioButton, String> radioButtonMap = new HashMap<>();
+    List<Recipe> recipeList;
+
+    RecipeDatabase db = RecipeDatabase.getSharedInstance();
+    RecipeBackendController backend = new RecipeBackendController(db);
+
+    private void updateRecipeList(){
+        flowResults.getChildren().clear();
+        recipeList = backend.getRecipes();
+        for (Recipe recipe : recipeList) {
+            flowResults.getChildren().add(recipeListItemMap.get(recipe.getName()));
+        }
     }
-
-    @FXML
-    public ComboBox<String> mainIngredient;
-    @FXML
-    public ComboBox<String> cuisine;
-    @FXML
-    public RadioButton levelEasy;
-    @FXML
-    public RadioButton levelMedium;
-    @FXML
-    public RadioButton levelHard;
-    @FXML
-    public RadioButton levelAll;
-    @FXML
-    public Spinner<Integer> maxPrice;
-    @FXML
-    public Slider maxTime;
-    @FXML
-    public FlowPane recipeListFlowPane;
-
-    ArrayList<String> cuisineList = new ArrayList<String>(Arrays.asList("Alla", "Sverige", "Grekland", "Indien", "Asien", "Afrika", "Frankrike"));
-    ArrayList<String> mainIngredientList = new ArrayList<String>(Arrays.asList("Alla", "Kött", "Fisk", "Kyckling", "Vegetariskt"));
-    ArrayList<String> difficultyList = new ArrayList<String>(Arrays.asList("Alla","Lätt", "Medel", "Svår"));
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mainIngredient.setItems(FXCollections.observableArrayList(mainIngredientList));
-        cuisine.setItems(FXCollections.observableArrayList(cuisineList));
-        mainIngredient.getSelectionModel().select("Alla");
-        cuisine.getSelectionModel().select("Alla");
+        for(Recipe recipe : backend.getRecipes()){
+            recipeListItemMap.put(recipe.getName(), new RecipeListItem(recipe, this));
+        }
+        radioButtonMap.put(radioEasy, "Lätt");
+        radioButtonMap.put(radioHard, "Svår" );
+        radioButtonMap.put(radioMedium, "Mellan");
+        radioButtonMap.put(radioAll, "Alla");
         updateRecipeList();
-
-        mainIngredient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
+        comboIngredient.getItems().addAll(backend.mainIngredientArr);
+        comboIngredient.getSelectionModel().select("Alla");
+        comboCuisine.getItems().addAll(backend.cuisineArr);
+        comboCuisine.getSelectionModel().select("Alla");
+        comboIngredient.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                backend.setMainIngredient(newValue);
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                backend.setMainIngredient(t1);
                 updateRecipeList();
             }
         });
+        comboCuisine.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                backend.setCuisine(t1);
+                updateRecipeList();
+            }
+        });
+        ToggleGroup difficultyToggleGroup = new ToggleGroup();
+        radioAll.setToggleGroup(difficultyToggleGroup);
+        radioEasy.setToggleGroup(difficultyToggleGroup);
+        radioMedium.setToggleGroup(difficultyToggleGroup);
+        radioHard.setToggleGroup(difficultyToggleGroup);
+        radioAll.setSelected(true);
+        difficultyToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                if(difficultyToggleGroup.getSelectedToggle() != null) {
+                    RadioButton selected = (RadioButton) difficultyToggleGroup.getSelectedToggle();
+                    backend.setDifficulty(radioButtonMap.get(selected));
+                    updateRecipeList();
+                }
+            }
+        });
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1000, 40, 10);
+        spinPrice.setValueFactory(valueFactory);
+        spinPrice.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+                backend.setMaxPrice(t1);
+                updateRecipeList();
+            }
+        });
+        spinPrice.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(!t1){
+                    Integer value = Integer.valueOf(spinPrice.getEditor().getText());
+                    backend.setMaxPrice(value);
+                    updateRecipeList();
+                }
+            }
+        });
+        slideTime.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldNum, Number newNum) {
+                Integer value = newNum.intValue() * 10;
+                labelTime.setText(value + " min");
+                if(value != null && !newNum.equals(oldNum) && !slideTime.isValueChanging()){
+                    backend.setMaxTime(value);
+                    updateRecipeList();
+                }
+            }
+        });
+
     }
-
-    private void updateBackend() {
-        backend.setCuisine(cuisine.getValue());
-        backend.setMainIngredient(mainIngredient.getValue());
-        if (levelEasy.isSelected()) backend.setDifficulty("Easy");
-        if (levelMedium.isSelected()) backend.setDifficulty("Medium");
-        if (levelHard.isSelected()) backend.setDifficulty("Hard");
-        if (levelAll.isSelected()) backend.setDifficulty("All");
-        backend.setMaxTime((int) maxTime.getValue());
-        backend.setMaxPrice(maxPrice.getValue());
+    public void openDetailedPane(Recipe recipe){
+        populateDetailPane(recipe);
+        paneDetailed.toFront();
     }
-
-    private void updateRecipeList() {
-        updateBackend();
-        recipeListFlowPane.getChildren().clear();
-
-        for (Recipe recipe : backend.getRecipes())
-            recipeListFlowPane.getChildren().add(new RecipeListItem(recipe, this));
+    @FXML
+    public void closeDetailedPane(){
+        paneSearch.toFront();
+    }
+    void populateDetailPane(Recipe recipe){
+        labelDetailedRecipeName.setText(recipe.getName());
+        imgDetailedRecipe.setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
     }
 
 }
