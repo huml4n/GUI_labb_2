@@ -1,6 +1,5 @@
 package recipesearch;
 
-
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,16 +13,16 @@ import javafx.stage.Stage;
  * and open the template in the editor.
  */
 public class RecipeSearch extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        
+
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("recipesearch/resources/RecipeSearch");
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("recipe_search.fxml"), bundle);
-        
+
         Scene scene = new Scene(root, 800, 500);
-        
+
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.show();
@@ -36,5 +35,5 @@ public class RecipeSearch extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
