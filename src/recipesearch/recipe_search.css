@@ -1,14 +1,14 @@
 .text-normal {
     -fx-font-size: 13px;
-    -fx-font-family: "Comfortaa";
+    -fx-font-family: "Noto Sans";
 }
 
 .text-smaller {
     -fx-font-size: 11px;
-    -fx-font-family: "Comfortaa";
+    -fx-font-family: "Noto Sans";
 }
 
 .text-larger {
     -fx-font-size: 15px;
-    -fx-font-family: "Comfortaa";
+    -fx-font-family: "Noto Sans";
 }
