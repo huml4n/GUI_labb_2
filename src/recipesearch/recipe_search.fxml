@@ -48,15 +48,15 @@
                         <ComboBox fx:id="comboCuisine" layoutX="112.0" layoutY="249.0" prefWidth="140.0" AnchorPane.bottomAnchor="223.0" AnchorPane.leftAnchor="125.0" />
                         <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="253.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Kök:" textAlignment="RIGHT" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="0.0" />
                         <RadioButton fx:id="radioAll" layoutX="125.0" layoutY="285.0" mnemonicParsing="false" text="Alla" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="125.0" />
-                        <RadioButton fx:id="radioEasy" layoutX="125.0" layoutY="310.0" mnemonicParsing="false" text="Lätt" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="125.0" />
-                        <RadioButton fx:id="radioMedium" layoutX="125.0" layoutY="335.0" mnemonicParsing="false" text="Mellan" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="125.0" />
+                        <RadioButton fx:id="radioEasy" layoutX="125.0" layoutY="310.0" mnemonicParsing="false" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="125.0" />
+                        <RadioButton fx:id="radioMedium" layoutX="125.0" layoutY="335.0" mnemonicParsing="false" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="125.0" />
                         <Label alignment="CENTER_RIGHT" layoutX="16.0" layoutY="285.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Svårighetsgrad:" textAlignment="RIGHT" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="0.0" />
-                        <RadioButton fx:id="radioHard" layoutX="125.0" layoutY="360.0" mnemonicParsing="false" text="Svår" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="125.0" />
+                        <RadioButton fx:id="radioHard" layoutX="125.0" layoutY="360.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="18.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="125.0" />
                         <Spinner fx:id="spinPrice" layoutX="125.0" layoutY="387.0" prefHeight="26.0" prefWidth="101.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="125.0" />
                         <Label alignment="CENTER_RIGHT" layoutX="59.0" layoutY="391.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Maxpris:" textAlignment="RIGHT" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="0.0" />
                         <Slider fx:id="slideTime" blockIncrement="1.0" layoutX="125.0" layoutY="428.0" majorTickUnit="1.0" max="15.0" min="1.0" minorTickCount="1" prefHeight="16.0" prefWidth="140.0" snapToTicks="true" value="1.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="125.0" />
                         <Label alignment="CENTER_RIGHT" layoutY="427.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Maxtid:" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" />
-                        <Label fx:id="labelTime" layoutX="205.0" layoutY="444.0" styleClass="text-smaller" text="10 min" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="205.0">
+                        <Label fx:id="labelTime" layoutX="194.0" layoutY="444.0" prefHeight="14.0" prefWidth="60.0" styleClass="text-smaller" text="10 min" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="194.0">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -70,13 +70,36 @@
                                  </image>
                               </ImageView>
                               <Label layoutX="86.0" layoutY="16.0" prefHeight="48.0" prefWidth="120.0" styleClass="logo" text="RECEPT" />
-                              <Label layoutX="177.0" layoutY="23.0" prefHeight="57.0" prefWidth="92.0" styleClass="logo-twirl" text="SÖK">
+                              <Label layoutX="177.0" layoutY="23.0" prefHeight="57.0" prefWidth="92.0" styleClass="logo-twirl" text="Sök">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
+                        <ImageView fitHeight="18.0" fitWidth="47.0" layoutX="149.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="171.3333330154419" AnchorPane.leftAnchor="149.0">
+                           <image>
+                              <Image url="@resources/icon_difficulty_easy.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="47.0" layoutX="149.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="146.3333330154419" AnchorPane.leftAnchor="149.0">
+                           <image>
+                              <Image url="@resources/icon_difficulty_medium.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="18.0" fitWidth="47.0" layoutX="149.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="121.3333330154419" AnchorPane.leftAnchor="149.0">
+                           <image>
+                              <Image url="@resources/icon_difficulty_hard.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="205.0" layoutY="310.0" text="Lätt" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="205.0" />
+                        <Label layoutX="203.0" layoutY="335.0" text="Medel" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="203.0" />
+                        <Label layoutX="204.0" layoutY="360.0" text="Svår" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="204.0" />
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="176.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="176.0">
+                           <image>
+                              <Image url="@resources/icon_time.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
