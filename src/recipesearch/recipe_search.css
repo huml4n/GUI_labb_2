@@ -1,14 +1,27 @@
 .text-normal {
     -fx-font-size: 13px;
-    -fx-font-family: "Noto Sans";
+    -fx-font-family: "Comic Neue";
 }
 
 .text-smaller {
     -fx-font-size: 11px;
-    -fx-font-family: "Noto Sans";
+    -fx-font-family: "Comic Neue";
 }
 
 .text-larger {
     -fx-font-size: 15px;
-    -fx-font-family: "Noto Sans";
+    -fx-font-family: "Comic Neue";
+}
+
+.logo {
+    -fx-font-size: 36px;
+    -fx-font-family: "Luckiest Guy";
+}
+
+.logo-twirl {
+    -fx-font-size: 42px;
+    -fx-font-family: "Z003";
+    -fx-text-fill: #FFAC33;
+    -fx-rotate: -20;
+    -fx-font-style: "Bold";
 }

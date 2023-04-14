@@ -13,10 +13,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="800.0" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipesearch.RecipeSearchController">
+<AnchorPane maxHeight="500.0" maxWidth="800.0" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" stylesheets="@recipe_search.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recipesearch.RecipeSearchController">
    <children>
       <StackPane layoutX="144.0" layoutY="63.0" prefHeight="308.0" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -29,7 +30,7 @@
                   </Label>
                   <ImageView fx:id="imgDetailedRecipe" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                      <image>
-                        <Image url="@../../../../../.dots/stows/workspace/GUI/RecipeSearch/recipes/coq-au-vin-2.jpg" />
+                        <Image url="@../../recipes/coq-au-vin-2.jpg" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnCloseDetailedRecipe" layoutX="732.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#closeDetailedPane" text="Stäng" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
@@ -43,24 +44,39 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                      <children>
                         <ComboBox fx:id="comboIngredient" layoutX="123.0" layoutY="213.0" prefWidth="140.0" AnchorPane.bottomAnchor="259.0" AnchorPane.leftAnchor="125.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="3.0" layoutY="217.0" maxWidth="120.0" minWidth="120.0" prefHeight="18.0" prefWidth="120.0" text="Huvudingrediens:" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="0.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="3.0" layoutY="217.0" maxWidth="120.0" minWidth="120.0" prefHeight="18.0" prefWidth="120.0" styleClass="text-normal" text="Huvudingrediens:" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="0.0" />
                         <ComboBox fx:id="comboCuisine" layoutX="112.0" layoutY="249.0" prefWidth="140.0" AnchorPane.bottomAnchor="223.0" AnchorPane.leftAnchor="125.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="253.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Kök:" textAlignment="RIGHT" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="0.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="253.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Kök:" textAlignment="RIGHT" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="0.0" />
                         <RadioButton fx:id="radioAll" layoutX="125.0" layoutY="285.0" mnemonicParsing="false" text="Alla" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="125.0" />
                         <RadioButton fx:id="radioEasy" layoutX="125.0" layoutY="310.0" mnemonicParsing="false" text="Lätt" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="125.0" />
                         <RadioButton fx:id="radioMedium" layoutX="125.0" layoutY="335.0" mnemonicParsing="false" text="Mellan" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="125.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="16.0" layoutY="285.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Svårighetsgrad:" textAlignment="RIGHT" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="0.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="16.0" layoutY="285.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Svårighetsgrad:" textAlignment="RIGHT" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="0.0" />
                         <RadioButton fx:id="radioHard" layoutX="125.0" layoutY="360.0" mnemonicParsing="false" text="Svår" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="125.0" />
                         <Spinner fx:id="spinPrice" layoutX="125.0" layoutY="387.0" prefHeight="26.0" prefWidth="101.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="125.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="59.0" layoutY="391.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Maxpris:" textAlignment="RIGHT" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="0.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="59.0" layoutY="391.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Maxpris:" textAlignment="RIGHT" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="0.0" />
                         <Slider fx:id="slideTime" blockIncrement="1.0" layoutX="125.0" layoutY="428.0" majorTickUnit="1.0" max="15.0" min="1.0" minorTickCount="1" prefHeight="16.0" prefWidth="140.0" snapToTicks="true" value="1.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="125.0" />
-                        <Label alignment="CENTER_RIGHT" layoutY="427.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Maxtid:" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" />
-                        <Label fx:id="labelTime" layoutX="205.0" layoutY="444.0" text="10 min" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="205.0">
+                        <Label alignment="CENTER_RIGHT" layoutY="427.0" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" styleClass="text-normal" text="Maxtid:" textAlignment="RIGHT" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="0.0" />
+                        <Label fx:id="labelTime" layoutX="205.0" layoutY="444.0" styleClass="text-smaller" text="10 min" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="205.0">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="13.0" layoutY="102.0" prefHeight="82.0" prefWidth="251.0" text="Hitta ett recept som passar genom att ändra på inställningarna nedan" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="102.0" />
+                        <Label alignment="CENTER" layoutX="13.0" layoutY="102.0" prefHeight="82.0" prefWidth="251.0" styleClass="text-larger" text="Hitta ett recept som passar genom att ändra på inställningarna nedan" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="102.0" />
+                        <Pane layoutX="14.0" layoutY="13.0" prefHeight="102.0" prefWidth="259.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/logo.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="86.0" layoutY="16.0" prefHeight="48.0" prefWidth="120.0" styleClass="logo" text="RECEPT" />
+                              <Label layoutX="177.0" layoutY="23.0" prefHeight="57.0" prefWidth="92.0" styleClass="logo-twirl" text="SÖK">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
