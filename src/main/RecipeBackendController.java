@@ -1,4 +1,4 @@
-package recipesearch;
+package main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;

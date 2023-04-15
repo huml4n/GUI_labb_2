@@ -1,4 +1,4 @@
-package recipesearch;
+package main;
 
 import java.util.ResourceBundle;
 import javafx.application.Application;
@@ -17,7 +17,7 @@ public class RecipeSearch extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ResourceBundle bundle = java.util.ResourceBundle.getBundle("recipesearch/resources/RecipeSearch");
+        ResourceBundle bundle = java.util.ResourceBundle.getBundle("main/resources/RecipeSearch");
 
         Parent root = FXMLLoader.load(getClass().getResource("recipe_search.fxml"), bundle);
 

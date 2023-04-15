@@ -1,4 +1,4 @@
-package recipesearch;
+package main;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
