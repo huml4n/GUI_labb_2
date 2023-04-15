@@ -139,6 +139,7 @@ public class RecipeSearchController implements Initializable {
                 }
             }
         });
+        populateMainIngredientComboBox();
 
     }
 
@@ -183,19 +184,19 @@ public class RecipeSearchController implements Initializable {
                                 switch (item) {
 
                                     case "Kött":
-                                        iconPath = "RecipeSearch/resources/icon_main_meat.png";
-                                        icon = new Image(this.getClass().getResourceAsStream("/home/casino/workspace/GUI/GUI_labb_2/src/main/resources/icon_main_meat.png"));
+                                        iconPath = "main/resources/icon_main_meat.png";
+                                        icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
                                         break;
                                     case "Fisk":
-                                        iconPath = "RecipeSearch/resources/icon_main_fish.png";
+                                        iconPath = "main/resources/icon_main_fish.png";
                                         icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
                                         break;
                                     case "Kyckling":
-                                        iconPath = "RecipeSearch/resources/icon_main_chicken.png";
+                                        iconPath = "main/resources/icon_main_chicken.png";
                                         icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
                                         break;
                                     case "Vegetarisk":
-                                        iconPath = "RecipeSearch/resources/icon_main_veg.png";
+                                        iconPath = "main/resources/icon_main_veg.png";
                                         icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
                                         break;
                                 }
