@@ -140,6 +140,7 @@ public class RecipeSearchController implements Initializable {
             }
         });
         populateMainIngredientComboBox();
+        populateCuisineComboBox();
 
     }
 
@@ -159,6 +160,53 @@ public class RecipeSearchController implements Initializable {
                 .setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
     }
 
+    private void populateCuisineComboBox() {
+        Callback<ListView<String>, ListCell<String>> cellFactory = new Callback<ListView<String>, ListCell<String>>() {
+
+            @Override
+            public ListCell<String> call(ListView<String> p) {
+
+                return new ListCell<String>() {
+
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        setText(item);
+
+                        if (item == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            Image icon = null;
+                            String iconPath;
+                            try {
+                                switch (item) {
+                                    case "Sverige" -> iconPath = "main/resources/icon_flag_sweden.png";
+                                    case "Afrika" -> iconPath = "main/resources/icon_flag_africa.png";
+                                    case "Asien" -> iconPath = "main/resources/icon_flag_asia.png";
+                                    case "Frankrike" -> iconPath = "main/resources/icon_flag_france.png";
+                                    case "Grekland" -> iconPath = "main/resources/icon_flag_greece.png";
+                                    case "Indien" -> iconPath = "main/resources/icon_flag_india.png";
+                                    default -> iconPath = null;
+                                }
+                                icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
+                            } catch (NullPointerException ex) {
+                                // This should never happen in this lab but could load a default image in case
+                                // of a NullPointer
+                            }
+                            ImageView iconImageView = new ImageView(icon);
+                            iconImageView.setFitHeight(12);
+                            iconImageView.setPreserveRatio(true);
+                            setGraphic(iconImageView);
+                        }
+                    }
+                };
+            }
+        };
+        comboCuisine.setButtonCell(cellFactory.call(null));
+        comboCuisine.setCellFactory(cellFactory);
+    }
+
     private void populateMainIngredientComboBox() {
         Callback<ListView<String>, ListCell<String>> cellFactory = new Callback<ListView<String>, ListCell<String>>() {
 
@@ -175,31 +223,18 @@ public class RecipeSearchController implements Initializable {
 
                         if (item == null || empty) {
                             setGraphic(null);
-                        }
-
-                        else {
+                        } else {
                             Image icon = null;
                             String iconPath;
                             try {
                                 switch (item) {
-
-                                    case "Kött":
-                                        iconPath = "main/resources/icon_main_meat.png";
-                                        icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
-                                        break;
-                                    case "Fisk":
-                                        iconPath = "main/resources/icon_main_fish.png";
-                                        icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
-                                        break;
-                                    case "Kyckling":
-                                        iconPath = "main/resources/icon_main_chicken.png";
-                                        icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
-                                        break;
-                                    case "Vegetarisk":
-                                        iconPath = "main/resources/icon_main_veg.png";
-                                        icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
-                                        break;
+                                    case "Kött" -> iconPath = "main/resources/icon_main_meat.png";
+                                    case "Fisk" -> iconPath = "main/resources/icon_main_fish.png";
+                                    case "Kyckling" -> iconPath = "main/resources/icon_main_chicken.png";
+                                    case "Vegetarisk" -> iconPath = "main/resources/icon_main_veg.png";
+                                    default -> iconPath = null;
                                 }
+                                icon = new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
                             } catch (NullPointerException ex) {
                                 // This should never happen in this lab but could load a default image in case
                                 // of a NullPointer
