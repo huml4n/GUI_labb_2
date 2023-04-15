@@ -4,7 +4,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.ait.dat215.lab2.Recipe;
@@ -20,7 +19,7 @@ public class RecipeListItem extends AnchorPane {
     @FXML
     private ImageView imgListItem;
 
-    public RecipeListItem(Recipe recipe, RecipeSearchController recipeSearchController){
+    public RecipeListItem(Recipe recipe, RecipeSearchController recipeSearchController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("recipe_listitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,8 +35,9 @@ public class RecipeListItem extends AnchorPane {
         this.imgListItem.setImage(recipe.getFXImage(imgListItem.getFitWidth(), imgListItem.getFitHeight()));
         this.labelListItem.setText(recipe.getName());
     }
+
     @FXML
-    protected void onClick(Event event){
+    protected void onClick(Event event) {
         parentController.openDetailedPane(recipe);
     }
 }
