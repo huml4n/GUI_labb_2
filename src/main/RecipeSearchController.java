@@ -6,6 +6,7 @@ import java.util.*;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -173,6 +174,11 @@ public class RecipeSearchController implements Initializable {
     @FXML
     public void closeDetailedPane() {
         paneSearch.toFront();
+    }
+
+    @FXML
+    public void mouseTrap(Event e){
+        e.consume();
     }
 
     void populateDetailPane(Recipe recipe) {

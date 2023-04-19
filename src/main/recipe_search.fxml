@@ -22,16 +22,23 @@
    <children>
       <StackPane layoutX="144.0" layoutY="63.0" prefHeight="650.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="paneDetailed" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #00000050;" styleClass="pane-detailed">
+            <AnchorPane fx:id="paneDetailed" onMouseClicked="#closeDetailedPane" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #00000050;" styleClass="pane-detailed">
                <children>
-                  <AnchorPane fx:id="paneDetailedSmall" prefHeight="395.0" prefWidth="613.0" style="-fx-background-color: #EEEEEE;" styleClass="list-item" stylesheets="@recipe_listitem.css" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="80.0">
+                  <AnchorPane fx:id="paneDetailedSmall" onMouseClicked="#mouseTrap" prefHeight="395.0" prefWidth="613.0" style="-fx-background-color: #EEEEEE;" styleClass="list-item" stylesheets="@recipe_listitem.css" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="80.0">
                      <children>
                         <Label fx:id="labelDetailedRecipeName" layoutX="258.0" layoutY="16.0" styleClass="text-detailed-title" text="Receptnamn" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="16.0">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnCloseDetailedRecipe" layoutX="732.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#closeDetailedPane" text="Stäng" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                        <Button fx:id="btnCloseDetailedRecipe" layoutX="732.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#closeDetailedPane" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/icon_close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <ImageView fx:id="imgDetailedRecipe" fitHeight="169.0" fitWidth="225.0" layoutX="17.0" layoutY="17.0" pickOnBounds="true" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
                            <image>
                               <Image url="@../../recipes/coq-au-vin-2.jpg" />
