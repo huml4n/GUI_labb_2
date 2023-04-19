@@ -1,0 +1,45 @@
+.text-normal {
+    -fx-font-size: 13px;
+    -fx-font-family: "Comic Neue";
+}
+
+.text-smaller {
+    -fx-font-size: 11px;
+    -fx-font-family: "Comic Neue";
+}
+
+.text-larger {
+    -fx-font-size: 15px;
+    -fx-font-family: "Comic Neue";
+}
+
+.text-title {
+    -fx-font-family: "Luckiest Guy";
+    -fx-font-size: 20px;
+}
+
+.text-detailed-title {
+    -fx-font-family: "Luckiest Guy";
+    -fx-font-size: 26px;
+}
+
+.list-item {
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.list-item:hover {
+    -fx-background-color: #00000020;
+}
+
+.list-item:pressed {
+    -fx-background-color: #00000060;
+}
+
+.list-image {
+    -fx-border-width: 2px;
+    -fx-border-color: #999999;
+    -fx-background-radius: 5px;
+}

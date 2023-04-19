@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root onMouseClicked="#onClick" prefHeight="100.0" prefWidth="600.0" styleClass="list-item" stylesheets="@recipe_listitem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imgListItem" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="list-item" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@resources/logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="4.0" layoutY="6.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" styleClass="list-image" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="labelListItem" layoutX="117.0" layoutY="1.0" styleClass="text-title" text="Stekt ägg" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="1.0" />
+      <ImageView fx:id="imgIngredient" fitHeight="31.0" fitWidth="24.0" layoutX="117.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="30.0">
+         <image>
+            <Image url="@resources/icon_main_chicken.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDifficulty" fitHeight="25.0" fitWidth="60.0" layoutX="142.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="33.0">
+         <image>
+            <Image url="@resources/icon_difficulty_hard.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelTime" layoutX="216.0" layoutY="35.0" text="100 minuter" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="35.0" />
+      <Label fx:id="labelPrice" layoutX="301.0" layoutY="36.0" text="69 kr" AnchorPane.leftAnchor="301.0" AnchorPane.topAnchor="36.0" />
+      <Label fx:id="labelDescription" alignment="TOP_LEFT" layoutX="116.0" layoutY="64.0" prefHeight="42.0" prefWidth="355.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." wrapText="true" AnchorPane.leftAnchor="116.0" AnchorPane.topAnchor="64.0" />
+      <ImageView fx:id="imgCuisine" fitHeight="24.0" fitWidth="31.0" layoutX="71.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/icon_flag_france.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>
