@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -160,6 +161,56 @@ public class RecipeSearchController implements Initializable {
                 .setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
     }
 
+    public Image getImage(String imageObj) {
+        String iconPath;
+
+        switch (imageObj) {
+            case "Sverige" -> iconPath = "main/resources/icon_flag_sweden.png";
+            case "Afrika" -> iconPath = "main/resources/icon_flag_africa.png";
+            case "Asien" -> iconPath = "main/resources/icon_flag_asia.png";
+            case "Frankrike" -> iconPath = "main/resources/icon_flag_france.png";
+            case "Grekland" -> iconPath = "main/resources/icon_flag_greece.png";
+            case "Indien" -> iconPath = "main/resources/icon_flag_india.png";
+            case "Lätt" -> iconPath = "main/resources/icon_difficulty_easy.png";
+            case "Medel" -> iconPath = "main/resources/icon_difficulty_medium.png";
+            case "Svår" -> iconPath = "main/resources/icon_difficulty_hard.png";
+            case "Kött" -> iconPath = "main/resources/icon_main_meat.png";
+            case "Fisk" -> iconPath = "main/resources/icon_main_fish.png";
+            case "Kyckling" -> iconPath = "main/resources/icon_main_chicken.png";
+            case "Vegetarisk" -> iconPath = "main/resources/icon_main_veg.png";
+            default -> iconPath = "main/resources/icon_difficulty_easy.png";
+        }
+        return new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
+    }
+
+    public Image getSquareImage(Image image) {
+
+        int x = 0;
+        int y = 0;
+        int width = 0;
+        int height = 0;
+
+        if (image.getWidth() > image.getHeight()) {
+            width = (int) image.getHeight();
+            height = (int) image.getHeight();
+            x = (int) (image.getWidth() - width) / 2;
+            y = 0;
+        }
+
+        else if (image.getHeight() > image.getWidth()) {
+            width = (int) image.getWidth();
+            height = (int) image.getWidth();
+            x = 0;
+            y = (int) (image.getHeight() - height) / 2;
+        }
+
+        else {
+            // Width equals Height, return original image
+            return image;
+        }
+        return new WritableImage(image.getPixelReader(), x, y, width, height);
+    }
+
     private void populateCuisineComboBox() {
         Callback<ListView<String>, ListCell<String>> cellFactory = new Callback<ListView<String>, ListCell<String>>() {
 
@@ -251,4 +302,5 @@ public class RecipeSearchController implements Initializable {
         comboIngredient.setButtonCell(cellFactory.call(null));
         comboIngredient.setCellFactory(cellFactory);
     }
+
 }
