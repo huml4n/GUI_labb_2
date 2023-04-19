@@ -33,9 +33,11 @@
 }
 
 .text-area {
-    -fx-background-color: -fx-background;
+    -fx-background-color: #EEEEEE;
 }
 
 .text-fat {
     -fx-font-weight: bold;
 }
+
+.pane-detailed {}

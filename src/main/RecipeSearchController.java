@@ -15,6 +15,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import se.chalmers.ait.dat215.lab2.Ingredient;
 import se.chalmers.ait.dat215.lab2.Recipe;
 import se.chalmers.ait.dat215.lab2.RecipeDatabase;
 
@@ -61,12 +62,12 @@ public class RecipeSearchController implements Initializable {
     @FXML
     public ImageView imgDetailedCuisine;
     @FXML
-    public ImageView imgDetailedIngrient;
+    public ImageView imgDetailedIngredient;
     @FXML
     public Label labelDetailedPrice;
     @FXML
     public Label labelDetailedTime;
-    
+
     @FXML
     public SplitPane paneSearch;
 
@@ -162,8 +163,6 @@ public class RecipeSearchController implements Initializable {
         populateMainIngredientComboBox();
         populateCuisineComboBox();
 
-
-
     }
 
     public void openDetailedPane(Recipe recipe) {
@@ -178,18 +177,26 @@ public class RecipeSearchController implements Initializable {
 
     void populateDetailPane(Recipe recipe) {
         labelDetailedRecipeName.setText(recipe.getName());
-        imgDetailedRecipe.setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
+        imgDetailedRecipe
+                .setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
         imgDetailedCuisine.setImage(getImage(recipe.getCuisine()));
         imgDetailedDifficuly.setImage(getImage(recipe.getDifficulty()));
-        imgDetailedIngrient.setImage(getImage(recipe.getMainIngredient()));
+        imgDetailedIngredient.setImage(getImage(recipe.getMainIngredient()));
         labelDetailedDescription.setText(recipe.getDescription());
-        labelDetailedIngredients.setText(recipe.getDescription());
+        labelDetailedIngredients.setText(getIngredientsString(recipe.getIngredients()));
         labelDetailedInstruction.setText(recipe.getInstruction());
         labelDetailedTime.setText(recipe.getTime() + " minuter");
         labelDetailedPrice.setText(recipe.getPrice() + " kr");
-        
-        
 
+    }
+
+    private String getIngredientsString(List<Ingredient> ingredientsList) {
+        String ingredients = "";
+        for (Ingredient item : ingredientsList) {
+            String itemString = item.toString();
+            ingredients += itemString + '\n';
+        }
+        return ingredients;
     }
 
     public Image getImage(String imageObj) {
@@ -213,8 +220,6 @@ public class RecipeSearchController implements Initializable {
         }
         return new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
     }
-
-
 
     public Image getSquareImage(Image image) {
 

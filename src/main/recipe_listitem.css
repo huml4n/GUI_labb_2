@@ -18,11 +18,24 @@
     -fx-font-size: 20px;
 }
 
+.text-detailed-title {
+    -fx-font-family: "Luckiest Guy";
+    -fx-font-size: 26px;
+}
+
 .list-item {
     -fx-border-width: 1px;
     -fx-border-color: #999999;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+}
+
+.list-item:hover {
+    -fx-background-color: #00000020;
+}
+
+.list-item:pressed {
+    -fx-background-color: #00000060;
 }
 
 .list-image {
