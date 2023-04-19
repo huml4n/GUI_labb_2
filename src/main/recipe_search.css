@@ -25,3 +25,17 @@
     -fx-rotate: -20;
     -fx-font-style: "italic";
 }
+
+.text-area .content {
+    -fx-font-size: 13px;
+    -fx-font-family: "Comic Neue";
+    -fx-background-color: -fx-background;
+}
+
+.text-area {
+    -fx-background-color: -fx-background;
+}
+
+.text-fat {
+    -fx-font-weight: bold;
+}

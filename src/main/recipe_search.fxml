@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,24 +22,6 @@
    <children>
       <StackPane layoutX="144.0" layoutY="63.0" prefHeight="308.0" prefWidth="472.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="paneDetailed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgray;">
-               <children>
-                  <Label fx:id="labelDetailedRecipeName" layoutX="229.0" layoutY="12.0" text="Receptnamn" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="12.0">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="imgDetailedRecipe" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
-                     <image>
-                        <Image url="@../../recipes/coq-au-vin-2.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="btnCloseDetailedRecipe" layoutX="732.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#closeDetailedPane" text="Stäng" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </AnchorPane>
             <SplitPane fx:id="paneSearch" dividerPositions="0.35" prefHeight="160.0" prefWidth="200.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
@@ -113,6 +96,72 @@
                   </AnchorPane>
               </items>
             </SplitPane>
+            <AnchorPane fx:id="paneDetailed" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgray;" styleClass="list-item" stylesheets="@recipe_listitem.css">
+               <children>
+                  <Label fx:id="labelDetailedRecipeName" layoutX="258.0" layoutY="16.0" styleClass="logo" text="Receptnamn" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="16.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnCloseDetailedRecipe" layoutX="732.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#closeDetailedPane" text="Stäng" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                  <ImageView fx:id="imgDetailedRecipe" fitHeight="178.0" fitWidth="225.0" layoutX="16.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                     <image>
+                        <Image url="@../../recipes/coq-au-vin-2.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgDetailedCuisine" fitHeight="114.0" fitWidth="60.0" layoutX="170.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/icon_flag_sweden.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="16.0" layoutY="18.0" prefHeight="169.0" prefWidth="225.0" styleClass="list-image" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+                  <ImageView fx:id="imgDetailedIngredient" fitHeight="26.0" fitWidth="27.0" layoutX="259.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="259.0" AnchorPane.topAnchor="65.0">
+                     <image>
+                        <Image url="@resources/icon_main_beef.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgDetailedDifficuly" fitHeight="26.0" fitWidth="95.0" layoutX="306.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="306.0" AnchorPane.topAnchor="65.0">
+                     <image>
+                        <Image url="@resources/icon_difficulty_hard.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelDetailedTime" layoutX="425.0" layoutY="67.0" prefHeight="26.0" prefWidth="106.0" styleClass="text-larger" text="420 minuter" AnchorPane.leftAnchor="425.0" AnchorPane.topAnchor="67.0" />
+                  <Label fx:id="labelDetailedPrice" layoutX="520.0" layoutY="68.0" prefHeight="26.0" prefWidth="106.0" styleClass="text-larger" text="1337 kr" AnchorPane.leftAnchor="520.0" AnchorPane.topAnchor="68.0" />
+                  <TextArea fx:id="labelDetailedDescription" editable="false" layoutX="256.0" layoutY="103.0" prefHeight="80.0" prefWidth="516.0" styleClass="content" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="102.0">
+                     <font>
+                        <Font name="Comic Neue Regular" size="13.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea fx:id="labelDetailedInstruction" editable="false" layoutX="256.0" layoutY="228.0" prefHeight="248.0" prefWidth="516.0" styleClass="content" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="227.0">
+                     <font>
+                        <Font name="Comic Neue Regular" size="13.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="256.0" layoutY="187.0" prefHeight="40.0" prefWidth="436.0" text="Instruktioner:" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="186.0">
+                     <font>
+                        <Font name="Comic Neue Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="185.0" prefHeight="40.0" prefWidth="146.0" text="Ingredienser:" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="185.0">
+                     <font>
+                        <Font name="Comic Neue Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="labelDetailedIngredients" editable="false" layoutX="23.0" layoutY="228.0" prefHeight="248.0" prefWidth="200.0" styleClass="content" text="&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;" wrapText="true" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="227.0">
+                     <font>
+                        <Font name="Comic Neue Regular" size="13.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="400.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="67.0">
+                     <image>
+                        <Image url="@resources/icon_time.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
          </children>
       </StackPane>
    </children>

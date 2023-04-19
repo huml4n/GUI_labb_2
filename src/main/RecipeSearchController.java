@@ -40,6 +40,8 @@ public class RecipeSearchController implements Initializable {
     public Slider slideTime;
     @FXML
     public Label labelTime;
+
+    // Detailed view components
     @FXML
     public ImageView imgDetailedRecipe;
     @FXML
@@ -47,7 +49,24 @@ public class RecipeSearchController implements Initializable {
     @FXML
     public Label labelDetailedRecipeName;
     @FXML
+    public TextArea labelDetailedIngredients;
+    @FXML
+    public TextArea labelDetailedDescription;
+    @FXML
+    public TextArea labelDetailedInstruction;
+    @FXML
     public Pane paneDetailed;
+    @FXML
+    public ImageView imgDetailedDifficuly;
+    @FXML
+    public ImageView imgDetailedCuisine;
+    @FXML
+    public ImageView imgDetailedIngrient;
+    @FXML
+    public Label labelDetailedPrice;
+    @FXML
+    public Label labelDetailedTime;
+    
     @FXML
     public SplitPane paneSearch;
 
@@ -143,6 +162,8 @@ public class RecipeSearchController implements Initializable {
         populateMainIngredientComboBox();
         populateCuisineComboBox();
 
+
+
     }
 
     public void openDetailedPane(Recipe recipe) {
@@ -157,8 +178,18 @@ public class RecipeSearchController implements Initializable {
 
     void populateDetailPane(Recipe recipe) {
         labelDetailedRecipeName.setText(recipe.getName());
-        imgDetailedRecipe
-                .setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
+        imgDetailedRecipe.setImage(recipe.getFXImage(imgDetailedRecipe.getFitWidth(), imgDetailedRecipe.getFitHeight()));
+        imgDetailedCuisine.setImage(getImage(recipe.getCuisine()));
+        imgDetailedDifficuly.setImage(getImage(recipe.getDifficulty()));
+        imgDetailedIngrient.setImage(getImage(recipe.getMainIngredient()));
+        labelDetailedDescription.setText(recipe.getDescription());
+        labelDetailedIngredients.setText(recipe.getDescription());
+        labelDetailedInstruction.setText(recipe.getInstruction());
+        labelDetailedTime.setText(recipe.getTime() + " minuter");
+        labelDetailedPrice.setText(recipe.getPrice() + " kr");
+        
+        
+
     }
 
     public Image getImage(String imageObj) {
@@ -182,6 +213,8 @@ public class RecipeSearchController implements Initializable {
         }
         return new Image(getClass().getClassLoader().getResourceAsStream(iconPath));
     }
+
+
 
     public Image getSquareImage(Image image) {
 
